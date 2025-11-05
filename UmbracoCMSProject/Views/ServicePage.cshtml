@@ -3,4 +3,6 @@
 @{
 	Layout = "mainLayout.cshtml";
 }
-<partial name="Partials/Sections/_ServiceSection" />
+
+<partial name="Partials/Layout/_PageHeader" model="(IPageHeader)Model" />
+@Html.GetBlockListHtml(Model.Sections)
