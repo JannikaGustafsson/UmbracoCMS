@@ -1,0 +1,67 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+
+@{
+    var info = (ContentModels.InformationSection)Model.Content;
+}
+
+<section class="w-full bg-[#f8f9fb] py-20">
+    <div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+       
+        <div class="relative flex justify-center">
+
+            <div class="absolute inset-0 top-10 left-10 w-[80%] h-[80%] bg-[#4a5759] -z-10 rotate-6 rounded-lg"></div>
+
+            <img src="@info.Image1?.Url()"
+                 alt="portrait"
+                 class="rounded-xl max-w-md w-full object-cover shadow-xl" />
+
+            @if (info.Dots != null)
+            {
+                <img src="@info.Dots.Url()"
+                     class="absolute -top-8 -right-8 w-32 opacity-70"
+                     alt="dots graphic" />
+            }
+        </div>
+
+        
+        <div>
+            <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-6 leading-tight">
+                @info.Headline
+            </h2>
+
+            <div class="space-y-6 text-gray-700">
+
+              
+                <div class="flex items-start space-x-4">
+                    <img src="@info.Location?.Url()" alt="location icon" class="w-6 h-6 mt-1" />
+                    <div>
+                        <p class="font-semibold">@info.LocationText</p>
+                        <p class="text-sm">@info.LocationTextAddress</p>
+                    </div>
+                </div>
+
+             
+                <div class="flex items-start space-x-4">
+                    <img src="@info.PhoneIcon?.Url()" alt="phone icon" class="w-6 h-6 mt-1" />
+                    <div>
+                        <p class="font-semibold">@info.PhoneText</p>
+                        <p class="text-sm">@info.PhoneNumber</p>
+                    </div>
+                </div>
+
+           
+                <div class="flex items-start space-x-4">
+                    <img src="@info.EmailImage?.Url()" alt="email icon" class="w-6 h-6 mt-1" />
+                    <div>
+                        <p class="font-semibold">@info.EmailText</p>
+                        <p class="text-sm">@info.EmailAddressText</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>

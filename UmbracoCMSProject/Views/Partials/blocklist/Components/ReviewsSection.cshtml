@@ -1,0 +1,64 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+
+@{
+    var content = (ContentModels.ReviewsSection)Model.Content;
+}
+
+<section class="py-20">
+    <div class="container mx-auto flex items-center gap-12">
+
+        
+        <div class="w-1/2 flex flex-col gap-6">
+
+            @if (!string.IsNullOrWhiteSpace(content.OverHead))
+            {
+                <p class="uppercase text-sm tracking-widest text-primary">@content.OverHead</p>
+            }
+
+           
+            @if (!string.IsNullOrWhiteSpace(content.Text))
+            {
+                <h2 class="text-4xl font-bold leading-tight text-gray-900">@content.Text</h2>
+            }
+
+            @if (!string.IsNullOrWhiteSpace(content.Text2))
+            {
+                <p class="text-gray-600 leading-relaxed text-lg">@content.Text2</p>
+            }
+
+            
+            @if (content.Stars != null)
+            {
+                <div>
+                    <img src="@content.Stars.Url()" alt="rating" class="h-5" />
+                </div>
+            }
+
+           
+            <div class="mt-2">
+                @if (!string.IsNullOrWhiteSpace(content.Signature))
+                {
+                    <p class="font-medium text-gray-900">@content.Signature</p>
+                }
+
+                @if (!string.IsNullOrWhiteSpace(content.Bank))
+                {
+                    <p class="text-primary font-semibold">@content.Bank</p>
+                }
+            </div>
+
+        </div>
+
+       
+        <div class="w-1/2">
+            @if (content.Image != null)
+            {
+                <img src="@content.Image.Url()"
+                     alt=""
+                     class="w-full h-[500px] object-cover rounded-lg shadow-sm" />
+            }
+        </div>
+
+    </div>
+</section>
