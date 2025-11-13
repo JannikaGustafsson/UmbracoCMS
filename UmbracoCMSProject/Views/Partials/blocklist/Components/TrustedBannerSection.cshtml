@@ -1,0 +1,89 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
+@using Umbraco.Cms.Core.Models
+@using Umbraco.Extensions
+
+@{
+    var c = Model.Content;
+
+    var eyebrow = c.Value<string>("eyebrow");
+    var headline = c.Value<string>("headline");
+    var body = c.Value<string>("body");
+
+    var links = c.Value<IEnumerable<Umbraco.Cms.Core.Models.Link>>("buttonLink") ?? Enumerable.Empty<Umbraco.Cms.Core.Models.Link>();
+    var link = links.FirstOrDefault();
+    var btnText = c.Value<string>("buttonText") ?? "Read our story";
+
+    var bgPattern =
+        c.Value<IPublishedContent>("backgroundPattern")
+        ?? c.Value<IPublishedContent>("backroundPattern")
+        ?? c.Value<IPublishedContent>("bgPattern");
+
+    var teamImage =
+        c.Value<IPublishedContent>("teamImage")
+        ?? c.Value<IPublishedContent>("peopleImage")
+        ?? c.Value<IPublishedContent>("team");                
+
+    var bgColor = c.Value<string>("sectionBgColor") ?? "#f7f8f8";
+}
+
+<section class="relative color-neutral overflow-visible pt-24 ">
+
+    @if (bgPattern != null)
+    {
+        <img src="@bgPattern.Url()" alt=""
+             class="absolute left-1/2 -translate-x-1/2 top-16
+                      w-[90%] md:w-[80%] xl:w-[70%]
+                      opacity-25 object-contain z-0" />
+    }
+
+    <div class="relative z-20 mx-auto max-w-7xl px-6 text-center">
+
+      <div class="flex flex-col gap-[4rem]">
+            <div class="flex flex-col items-center ">
+                @if (!string.IsNullOrWhiteSpace(eyebrow))
+                {
+                    <p class="text-[1.875rem] font-bold text-primary ">
+                        @eyebrow
+                    </p>
+                }
+
+                @if (!string.IsNullOrWhiteSpace(headline))
+                {
+                    <h2 class="text-[1.875rem] font-semibold text-secondary ">
+                        @Html.Raw(headline)
+                    </h2>
+                }
+
+                @if (!string.IsNullOrWhiteSpace(body))
+                {
+                    <div class="mx-auto my-6  text-body-text text-[1rem] text-center leading-relaxed">
+                        @Html.Raw(body)
+                    </div>
+                }
+
+                @{
+                    var href = link?.Url ?? "#";
+                    var target = link?.Target ?? "_self";
+                }
+
+                <a href="@href" target="@target"
+                   class=" bg-accent text-accent text-center font-bold rounded-md cursor-pointer select-none py-4 px-16 text-[1.25rem]"
+                   style="background-color: var(--color-primary);">
+                    @btnText
+                </a>
+            </div>
+
+            @if (teamImage != null)
+            {
+                <div class=" w-full flex justify-center">
+                    <img src="@teamImage.Url()" alt="Team"
+                         class=" object-contain z-0" />
+
+                </div>
+            }
+      </div>        
+    </div>   
+</section>
+
+
+

@@ -4,7 +4,7 @@
     var content = (ContentModels.ServiceSection)Model.Content;
     var settings = Model.Settings as ContentModels.ServiceSettings;
 
-    var sectionColor = settings?.ServiceBgColor?.Color ?? "#ffffff";
+    var sectionColor = settings?.ServiceBgColor?.Color ?? "#f7f7f7";
 
     var current = Umbraco.AssignedContentItem;
     var siteRoot = current?.Root();
@@ -12,7 +12,7 @@
     var servicePage = siteRoot?.Children<ServicePage>()?.FirstOrDefault();
     var items = servicePage?.Children<ServiceDetail>()?.OrderByDescending(x => x.CreateDate).ToList() ?? [];
 }
-<section class="py-[4rem] bg-[@sectionColor)]">
+<section class="py-[4rem]" style="background-color:@sectionColor;">
     <div class="max-w-7xl mx-auto px-4">
         <div class="flex flex-col gap-2 items-center">
             <h2 class="text-[.875rem] text-secondary font-bold uppercase">@content.ServiceLabel</h2>
@@ -25,11 +25,15 @@
             {
                 @foreach(var item in items)
                 {
-                    <div class="bg-neutral border-.2 bg-white-100 w-full min-h-[350px] overflow-hidden">
+                    <div class="bg-neutral border w-full min-h-[350px] overflow-hidden shadow-sm"
+                         style="border-color: var(--color-border-gray);">
+
                         <a href="@item.Url()" class="block no-underline">
-                            <h4 class="p-[1.5rem] font-semibold text-primary">@item.Name</h4>
+                            <h4 class="p-[1.5rem] text-[1.375rem] font-bold text-primary leading-tight">@item.Name</h4>
+
+
                             <img src="@(item.ServiceDetailThumbnail?.Url() ?? "~/images/riskmanagement.svg" )" class="block w-full h-[220px] object-cover" />
-                            <p class="text-sm p-[1.5rem]">@item.ServiceDetailExcerpt</p>
+                            <p class="text-sm font-normal p-[1.5rem] text-gray-700">@item.ServiceDetailExcerpt</p>
                         </a>
                     </div>
                 }
