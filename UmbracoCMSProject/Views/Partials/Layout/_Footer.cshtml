@@ -1,0 +1,18 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+@{
+    var root = Umbraco.ContentAtRoot();
+    var siteSettings = root.OfType<SiteSettings>().FirstOrDefault();
+
+    var siteName = siteSettings?.SiteName ?? "Onatrix";
+}
+
+<footer class="py-12" style="background-color: #0E0E0E;">
+    <div class="max-w-7xl mx-auto px-4">
+        <p class="text-sm text-body-text">
+            © @siteName. All Rights Reserved. Credits to
+            <span class="text-secondary font-medium">Themesflat</span>
+        </p>
+    </div>
+</footer>
+
