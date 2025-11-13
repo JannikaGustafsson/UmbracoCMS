@@ -1,0 +1,40 @@
+﻿@using Umbraco.Cms.Core.Models.Blocks
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<BlockListItem>
+
+@{
+    var content = (Umbraco.Cms.Web.Common.PublishedModels.PartnersLogosSection)Model.Content;
+}
+
+<section class="py-12">
+    <div class="container mx-auto">
+        <div class="flex flex-wrap justify-center items-center gap-10">
+
+            @if (content.Logo1 != null)
+            {
+                <img src="@content.Logo1.Url()" alt="" />
+            }
+            @if (content.Logo2 != null)
+            {
+                <img src="@content.Logo2.Url()" alt="" />
+            }
+            @if (content.Logo3 != null)
+            {
+                <img src="@content.Logo3.Url()" alt="" />
+            }
+            @if (content.Logo4 != null)
+            {
+                <img src="@content.Logo4.Url()" alt="" />
+            }
+            @if (content.Logo5 != null)
+            {
+                <img src="@content.Logo5.Url()" alt="" />
+            }
+            @if (content.Logo6 != null)
+            {
+                <img src="@content.Logo6.Url()" alt="" />
+            }
+
+        </div>
+    </div>
+</section>
+
