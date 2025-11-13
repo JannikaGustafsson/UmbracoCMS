@@ -1,0 +1,48 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+
+@{
+    var content = (ContentModels.Introduction)Model.Content;
+}
+
+<section class="py-12">
+    <div class="container mx-auto flex gap-16 items-start">
+
+        @* Bilden *@
+        <div class="w-full h-[20rem] object-cover">
+            @if (content.ImageSection != null)
+            {                
+                <img src="@content.ImageSection.Url()" alt="" class="w-full h-auto object-cover" />
+               
+            }
+
+            @if (!string.IsNullOrWhiteSpace(content.Signature))
+            {
+                <p class="text-sm mt-3 text-primary">@content.Signature</p>
+            }
+
+        </div>
+
+
+        @* Textdelen *@
+        <div class="w-1/2 flex flex-col gap-6 text-primary">
+
+            @if (!string.IsNullOrWhiteSpace(content.Text1))
+            {
+                <p class="text-lg italic">@content.Text1</p>
+            }
+
+            @if (!string.IsNullOrWhiteSpace(content.Text2))
+            {
+                <p class="text-lg">@content.Text2</p>
+            }
+
+        </div>
+
+    </div>
+</section>
+
+
+
+
+
