@@ -1,0 +1,79 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
+
+@{
+    var content = (SuccessStoriesSection)Model.Content;
+}
+
+<section class="relative bg-primary text-neutral overflow-hidden">
+
+       @if (content.ImageMap != null)
+    {
+        <div class="pointer-events-none absolute inset-x-0 top-4 flex justify-center">
+            <img src="@content.ImageMap.Url()"
+                 alt="" aria-hidden="true"
+                 class="w-[90%] max-w-5xl opacity-30" />
+        </div>
+    }
+
+    <div class="relative z-10 max-w-5xl mx-auto px-4">
+
+        @if (!string.IsNullOrWhiteSpace(content.Overhead))
+        {
+            <p class="text-[.875rem] font-semibold uppercase text-secondary text-center">
+                @content.Overhead
+            </p>
+        }
+
+        <div class="text-center mb-10">
+            <h2 class="text-[1.875rem] font-bold text-neutral">
+                @content.Title
+            </h2>
+        </div>
+
+        <div class="flex justify-center gap-16 text-center mb-4">
+
+            <div class="w-48">
+                <div class="text-rte-xl font-bold text-secondary leading-none">
+                    @content.Number1
+                </div>
+                <p class="mt-4 text-rte-xs text-neutral leading-snug">
+                    @content.Text1
+                </p>
+            </div>
+
+            <div class="w-48">
+                <div class="text-rte-xl font-bold text-secondary leading-none">
+                    @content.Number2
+                </div>
+                <p class="mt-4 text-rte-xs text-neutral leading-snug">
+                    @content.Text2
+                </p>
+            </div>
+
+            <div class="w-48">
+                <div class="text-rte-xl font-bold text-secondary leading-none">
+                    @content.Number3
+                </div>
+                <p class="mt-4 text-rte-xs text-neutral leading-snug">
+                    @content.Text3
+                </p>
+            </div>
+
+        </div>
+
+        @if (content.Image != null)
+        {
+            <div class="mt-10 flex justify-center translate-y-10">
+                <img src="@content.Image.Url()"
+                     alt="@content.Image.Name"
+                     class="w-full max-w-3xl h-auto object-cover" />
+            </div>
+        }
+    </div>
+</section>
+
+
+
+
+

@@ -26,7 +26,7 @@
     var bgColor = c.Value<string>("sectionBgColor") ?? "#f7f8f8";
 }
 
-<section class="relative color-neutral overflow-visible pt-24 ">
+<section class="relative color-neutral overflow-visible pt-24">
 
     @if (bgPattern != null)
     {
@@ -42,21 +42,21 @@
             <div class="flex flex-col items-center ">
                 @if (!string.IsNullOrWhiteSpace(eyebrow))
                 {
-                    <p class="text-[1.875rem] font-bold text-primary ">
+                    <p class="text-[1.875rem] font-bold text-primary">
                         @eyebrow
                     </p>
                 }
 
                 @if (!string.IsNullOrWhiteSpace(headline))
                 {
-                    <h2 class="text-[1.875rem] font-semibold text-secondary ">
+                    <h2 class="text-[1.875rem] font-semibold text-secondary">
                         @Html.Raw(headline)
                     </h2>
                 }
 
                 @if (!string.IsNullOrWhiteSpace(body))
                 {
-                    <div class="mx-auto my-6  text-body-text text-[1rem] text-center leading-relaxed">
+                    <div class="mx-auto my-6 text-body-text text-[1rem] text-center leading-relaxed">
                         @Html.Raw(body)
                     </div>
                 }
