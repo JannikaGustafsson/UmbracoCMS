@@ -7,3 +7,6 @@
 <partial name="Partials/Layout/_PageHeader" model="(IPageHeader)Model" />
 
 <h1>@Model.BannerTitle</h1>
+
+@Html.GetBlockListHtml(Model.InformationSection)
+@Html.GetBlockListHtml(Model.PartnersLogosSections)
