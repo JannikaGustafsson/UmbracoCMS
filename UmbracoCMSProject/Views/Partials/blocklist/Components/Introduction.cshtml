@@ -5,14 +5,13 @@
     var content = (ContentModels.Introduction)Model.Content;
 }
 
-<section class="py-12">
-    <div class="container mx-auto flex gap-16 items-start">
+<section class="py-20">
+    <div class="container mx-auto flex gap-10 items-start">
 
-        @* Bilden *@
-        <div class="w-full h-[20rem] object-cover">
+        <div class="w-auto flex-shrink-0">
             @if (content.ImageSection != null)
             {                
-                <img src="@content.ImageSection.Url()" alt="" class="w-full h-auto object-cover" />
+                <img src="@content.ImageSection.Url()" alt="" class="w-full max-w-sm h-auto object-cover" />
                
             }
 
@@ -23,22 +22,19 @@
 
         </div>
 
-
-        @* Textdelen *@
-        <div class="w-1/2 flex flex-col gap-6 text-primary">
+        <div class="flex-1 flex flex-col gap-6 text-primary">
 
             @if (!string.IsNullOrWhiteSpace(content.Text1))
             {
-                <p class="text-lg italic">@content.Text1</p>
+                <p class="text-xl italic leading-relaxed">@content.Text1</p>
             }
 
             @if (!string.IsNullOrWhiteSpace(content.Text2))
             {
-                <p class="text-lg">@content.Text2</p>
+                <p class="text-lg leading-relaxed">@content.Text2</p>
             }
 
         </div>
-
     </div>
 </section>
 

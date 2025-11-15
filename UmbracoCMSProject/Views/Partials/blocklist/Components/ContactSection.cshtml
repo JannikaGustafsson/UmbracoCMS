@@ -12,48 +12,42 @@
 
 <section class="relative py-20">
 
-    <!-- Map Background -->
-    <div class="absolute inset-0 overflow-hidden opacity-60">
+    <div class="absolute inset-0 ">
         @if (map != null)
         {
             <img src="@map.Url()" alt="Map" class="w-full h-full object-cover" />
         }
     </div>
 
-    <!-- Content Wrapper -->
-    <div class="relative max-w-4xl mx-auto bg-white shadow-xl rounded-xl p-10">
+    <div class="relative max-w-4xl mx-auto bg-neutral shadow-xl p-10 mt-24 text-center -mb-36">
 
-        <!-- Overhead -->
         @if (!string.IsNullOrWhiteSpace(overhead))
         {
-            <span class="text-sm font-semibold uppercase tracking-wide text-gray-500 block mb-1">
+            <span class="text-sm font-semibold uppercase tracking-wide text-secondary block mb-1">
                 @overhead
             </span>
         }
 
-        <!-- Headline -->
-        <h2 class="text-3xl font-bold text-gray-800 mb-3">
-            @headline
+        <h2 class="text-3xl font-bold text-primary mb-3 leading-tight">
+            Let us know about your <br /> next project
         </h2>
 
-        <!-- Description -->
-        <p class="text-gray-600 mb-8">
-            @text1
+        <p class="text-primary mb-8 text-sm leading-relaxed">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas <br />
+            consectetur, ligula semper sagittis lobortis, eros metus efficitur purus.
         </p>
 
-        <!-- FORM -->
         <form method="post" action="/contact/submit" class="space-y-6">
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-                <!-- NAME -->
+
                 <input type="text"
                        name="name"
                        placeholder="Name"
                        value="@(form?["name"])"
                        class="w-full border border-gray-300 rounded-md px-4 py-3 text-gray-700 focus:ring-2 focus:ring-gray-800" />
 
-                <!-- PHONE -->
                 <input type="text"
                        name="phone"
                        placeholder="Phone"
@@ -64,14 +58,12 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-                <!-- EMAIL -->
                 <input type="email"
                        name="email"
                        placeholder="Email address"
                        value="@(form?["email"])"
                        class="w-full border border-gray-300 rounded-md px-4 py-3 text-gray-700 focus:ring-2 focus:ring-gray-800" />
 
-                <!-- SERVICE DROPDOWN -->
                 <select name="service"
                         class="w-full border border-gray-300 rounded-md px-4 py-3 text-gray-700 focus:ring-2 focus:ring-gray-800">
                     <option selected>Financial consulting</option>
@@ -79,15 +71,11 @@
                     <option>Investment analysis</option>
                 </select>
 
-            </div>
-
-            <!-- SUBMIT -->
-            <button type="submit"
-                    class="bg-gray-800 text-white px-8 py-3 rounded-md font-semibold hover:bg-gray-900 transition">
-                Submit
-            </button>
-
+            </div>     
+                <button type="submit"
+                    class="bg-primary text-white px-8 py-3 rounded-md font-semibold hover:bg-gray-900 transition mx-auto block">
+                    Submit
+                </button>   
         </form>
-
     </div>
 </section>
